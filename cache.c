@@ -1,6 +1,6 @@
 #include "server.h"
 
-// Global cache variables
+// Global cache variables (defined here, declared in server.h)
 CacheEntry *cache_head = NULL;
 CacheEntry *cache_tail = NULL;
 int cache_size = 0;

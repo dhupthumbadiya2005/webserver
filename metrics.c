@@ -1,6 +1,6 @@
 #include "server.h"
 
-// Global metrics variables
+// Global metrics variables (defined here, declared in server.h)
 long total_requests = 0;
 long cache_hits = 0;
 long cache_misses = 0;
@@ -46,6 +46,7 @@ void print_metrics() {
 }
 
 void *metrics_thread(void *arg) {
+    (void)arg; // Suppress unused parameter warning
     printf("Metrics thread started\n");
     
     while (server_running) {

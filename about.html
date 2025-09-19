@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Advanced Multithreaded Web Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 About This Server</h1>
+            <p>Technical Details and Architecture</p>
+        </header>
+        
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/api/data.json">API Data</a>
+            <a href="/metrics">Live Metrics</a>
+            <a href="/test-image.png">Test Image</a>
+        </nav>
+        
+        <main>
+            <section>
+                <h2>🏗️ Architecture Overview</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Thread Pool</h3>
+                        <p>10 pre-created worker threads handle incoming requests concurrently, eliminating thread creation overhead.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Task Queue</h3>
+                        <p>Circular buffer queue with mutex synchronization ensures thread-safe request distribution.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>LRU Cache</h3>
+                        <p>Least Recently Used cache with 50-entry capacity provides fast file serving for repeated requests.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Metrics System</h3>
+                        <p>Real-time performance monitoring tracks requests, cache hits, and response times.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>🔧 Technical Specifications</h2>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0;"><strong>Language:</strong> C99</li>
+                        <li style="margin: 10px 0;"><strong>Threading:</strong> POSIX threads (pthread)</li>
+                        <li style="margin: 10px 0;"><strong>Port:</strong> 8080</li>
+                        <li style="margin: 10px 0;"><strong>Max Threads:</strong> 10</li>
+                        <li style="margin: 10px 0;"><strong>Queue Size:</strong> 100</li>
+                        <li style="margin: 10px 0;"><strong>Cache Size:</strong> 50 entries</li>
+                        <li style="margin: 10px 0;"><strong>Buffer Size:</strong> 4KB</li>
+                        <li style="margin: 10px 0;"><strong>Protocol:</strong> HTTP/1.1</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section>
+                <h2>🚀 Performance Features</h2>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3>Concurrency</h3>
+                    <p>Multiple threads can handle requests simultaneously, dramatically improving throughput compared to single-threaded servers.</p>
+                    
+                    <h3>Caching</h3>
+                    <p>Frequently requested files are cached in memory, reducing disk I/O and improving response times.</p>
+                    
+                    <h3>Connection Reuse</h3>
+                    <p>Efficient socket management with proper cleanup and resource management.</p>
+                    
+                    <h3>Security</h3>
+                    <p>Directory traversal protection prevents unauthorized file access.</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>📊 Real-World Applications</h2>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>This server demonstrates production-ready concepts used in:</p>
+                    <ul>
+                        <li>High-performance web servers (nginx, Apache)</li>
+                        <li>Load balancers and reverse proxies</li>
+                        <li>API gateways and microservices</li>
+                        <li>Content delivery networks (CDNs)</li>
+                        <li>Real-time monitoring systems</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Built with C, pthreads, and lots of ❤️</p>
+        </footer>
+    </div>
+</body>
+</html>

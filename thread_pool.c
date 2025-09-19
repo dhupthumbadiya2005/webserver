@@ -1,6 +1,6 @@
 #include "server.h"
 
-// Global thread pool variables
+// Global thread pool variables (defined here, declared in server.h)
 int task_queue[MAX_QUEUE];
 int front = 0, rear = 0, count = 0;
 pthread_mutex_t queue_mutex = PTHREAD_MUTEX_INITIALIZER;

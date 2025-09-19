@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Multithreaded Web Server Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Advanced Multithreaded Web Server</h1>
+            <p>Demonstrating Thread Pooling, Caching, and Performance Metrics</p>
+        </header>
+        
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/api/data.json">API Data</a>
+            <a href="/metrics">Live Metrics</a>
+            <a href="/test-image.png">Test Image</a>
+        </nav>
+        
+        <main>
+            <section class="features">
+                <h2>✨ Server Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🧵 Multithreading</h3>
+                        <p>10 worker threads handling concurrent requests efficiently</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💾 Smart Caching</h3>
+                        <p>LRU cache with 50 entry capacity for optimal performance</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Real-time Metrics</h3>
+                        <p>Live performance monitoring and statistics</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔒 Security</h3>
+                        <p>Directory traversal protection and input validation</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="demo">
+                <h2>🧪 Test the Server</h2>
+                <div class="test-buttons">
+                    <button onclick="loadTest()">Load Test (100 requests)</button>
+                    <button onclick="cacheTest()">Cache Test</button>
+                    <button onclick="concurrentTest()">Concurrent Test</button>
+                    <button onclick="viewMetrics()">View Metrics</button>
+                </div>
+                <div id="test-results"></div>
+            </section>
+            
+            <section class="performance">
+                <h2>📈 Performance Stats</h2>
+                <div id="performance-stats">
+                    <p>Click "View Metrics" to see real-time performance data</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Built with C, pthreads, and lots of ❤️</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

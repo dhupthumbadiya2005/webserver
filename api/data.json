@@ -1,0 +1,28 @@
+{
+  "server": {
+    "name": "Advanced Multithreaded Web Server",
+    "version": "1.0.0",
+    "features": [
+      "Thread Pooling",
+      "LRU Caching",
+      "Real-time Metrics",
+      "Concurrent Request Handling",
+      "Security Features"
+    ]
+  },
+  "performance": {
+    "max_threads": 10,
+    "cache_size": 50,
+    "queue_size": 100,
+    "buffer_size": "4KB"
+  },
+  "endpoints": {
+    "/": "Home page with interactive demo",
+    "/about.html": "Technical documentation",
+    "/api/data.json": "This API endpoint",
+    "/metrics": "Live performance metrics",
+    "/test-image.png": "Sample image for testing"
+  },
+  "timestamp": "2024-01-01T00:00:00Z",
+  "status": "operational"
+}
