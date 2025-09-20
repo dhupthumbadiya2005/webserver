@@ -1,4 +1,3 @@
-
 # 🚀 Advanced Multithreaded Web Server
 
 A high-performance, production-ready web server built in C with advanced features including thread pooling, LRU caching, real-time metrics, and concurrent request handling. This project demonstrates advanced systems programming concepts and is perfect for learning, portfolios, and technical interviews.
@@ -97,7 +96,7 @@ A high-performance, production-ready web server built in C with advanced feature
 ### 1. Clone and Build
 ```bash
 git clone <repository-url>
-cd "Multithreded webserver"
+cd "Multithreaded webserver"
 make
 ```
 
@@ -108,16 +107,33 @@ make run
 ./webserver
 ```
 
-### 3. Test the Server
+### 3. Start Load Balancer Setup (Recommended)
+```bash
+make start-lb
+# This will start 4 backend servers and the load balancer on port 8085
+```
+
+### 4. Test the Server
 ```bash
 # Quick test
 curl http://localhost:8080
 
-# Interactive demo
-./demo.sh
-
 # Automated testing
 make test
+
+# Python load testing
+make load-test
+```
+
+### 5. Stop All Services
+```bash
+make stop
+```
+
+#### **Note:**  
+You can override the server port by setting the `PORT` environment variable:
+```bash
+PORT=8082 ./webserver
 ```
 
 ## 📦 Installation & Setup
@@ -181,98 +197,22 @@ make load-test
 - **`/style.css`** - CSS stylesheet
 - **`/script.js`** - JavaScript functionality
 
-### Server Configuration
-Edit `server.h` to modify:
-```c
-#define PORT 8080              // Server port
-#define MAX_THREADS 10         // Number of worker threads
-#define MAX_QUEUE 100          // Task queue size
-#define MAX_CACHE_SIZE 50      // Cache capacity
-#define BUFFER_SIZE 4096       // Request buffer size
-```
-
-## 🧪 Testing & Demonstration
-
-### Interactive Web Demo
-```bash
-./demo.sh
-# Choose option 1 for interactive demo
-```
-- Opens browser to `http://localhost:8080`
-- Interactive buttons to test all features
-- Real-time metrics dashboard
-- Visual demonstration of multithreading and caching
-
-### Automated Testing
-```bash
-# Comprehensive benchmark
-./benchmark.sh
-
-# Python load testing
-python3 load_test.py
-
-# Makefile testing
-make test
-```
-
-### Manual Testing
-```bash
-# Test basic functionality
-curl http://localhost:8080
-
-# Test metrics
-curl http://localhost:8080/metrics
-
-# Test caching (first request slower, second faster)
-time curl -s http://localhost:8080/style.css > /dev/null
-time curl -s http://localhost:8080/style.css > /dev/null
-
-# Test concurrent requests
-for i in {1..10}; do curl -s http://localhost:8080/ & done; wait
-```
-
-### Test Results Example
-```
-📊 LOAD TEST RESULTS
-============================================================
-Total Requests: 200
-Successful: 200
-Failed: 0
-Success Rate: 100.0%
-Total Duration: 0.09s
-Requests/Second: 2334.9
-
-Response Time Statistics:
-  Average: 7.95ms
-  Median: 7.92ms
-  Min: 2.05ms
-  Max: 14.61ms
-  95th Percentile: 11.85ms
-
-Cache Performance:
-  Cache Hits: 95%
-  Cache Speedup: 75%
-```
-
 ## 📁 Project Structure
 
 ```
 ├── server.c              # Main server implementation
 ├── server.h              # Header file with declarations
-├── thread_pool.c         # Thread pool and task queue
+├── thread_pool.c         # Worker thread and task queue
 ├── cache.c               # LRU cache implementation
 ├── metrics.c             # Performance metrics collection
 ├── request_handler.c     # HTTP request processing
-├── load_balancer.c       # Load balancing (bonus feature)
+├── load_balancer.c       # Load balancer implementation
 ├── Makefile              # Build configuration
 ├── README.md             # This documentation
 │
-├── Testing & Demo Files
 ├── benchmark.sh          # Automated testing script
 ├── load_test.py          # Python load testing
-├── demo.sh               # Interactive demo launcher
 │
-├── Web Content
 ├── index.html            # Interactive demo page
 ├── style.css             # Styling for demo
 ├── script.js             # Client-side testing functions
@@ -292,6 +232,16 @@ Cache Performance:
 | `metrics.c` | Performance tracking, statistics collection |
 | `request_handler.c` | HTTP parsing, response generation, file serving |
 | `server.h` | Common headers, constants, function declarations |
+| `load_balancer.c` | Load balancer for distributing requests |
+| `Makefile` | Build and automation commands |
+| `benchmark.sh` | Automated benchmark and testing script |
+| `load_test.py` | Python-based load testing |
+| `index.html` | Main web UI |
+| `style.css` | CSS for web UI |
+| `script.js` | JavaScript for web UI |
+| `about.html` | Technical documentation page |
+| `api/data.json` | Example API endpoint |
+| `test-image.png` | Sample image for testing |
 
 ## 🔧 Technical Specifications
 
@@ -548,9 +498,10 @@ This project is designed for educational purposes and demonstrates:
 ```bash
 make                    # Build the server
 make run               # Start the server
+make start-lb          # Start load balancer and backends
+make stop              # Stop all services
 make test              # Run automated tests
 make load-test         # Run load testing
-./demo.sh              # Interactive demo
 curl http://localhost:8080/metrics  # View metrics
 ```
 
