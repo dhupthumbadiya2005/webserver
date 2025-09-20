@@ -42,9 +42,20 @@ int main() {
     pthread_t metrics_tid;
     int thread_ids[MAX_THREADS];
     
-    printf("🚀 Starting Advanced Multithreaded Web Server\n");
+    // Allow port to be overridden by environment variable
+    int port = PORT;
+    char *port_env = getenv("PORT");
+    if (port_env) {
+        port = atoi(port_env);
+        if (port <= 0 || port > 65535) {
+            printf("Invalid PORT environment variable: %s, using default %d\n", port_env, PORT);
+            port = PORT;
+        }
+    }
+    
+    printf(" Starting Advanced Multithreaded Web Server\n");
     printf("Features: Thread Pooling, Caching, Performance Metrics\n");
-    printf("Port: %d, Threads: %d, Cache Size: %d\n\n", PORT, MAX_THREADS, MAX_CACHE_SIZE);
+    printf("Port: %d, Threads: %d, Cache Size: %d\n\n", port, MAX_THREADS, MAX_CACHE_SIZE);
     
     // Set up signal handlers for graceful shutdown
     signal(SIGINT, signal_handler);
@@ -68,7 +79,7 @@ int main() {
     // Bind socket
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = INADDR_ANY;
-    server_addr.sin_port = htons(PORT);
+    server_addr.sin_port = htons(port);
     
     if (bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
         perror("Bind failed");
@@ -83,7 +94,7 @@ int main() {
         exit(1);
     }
     
-    printf("Server listening on port %d...\n", PORT);
+    printf("Server listening on port %d...\n", port);
     
     // Create worker threads
     for (int i = 0; i < MAX_THREADS; i++) {
@@ -105,7 +116,7 @@ int main() {
     }
     
     printf("All worker threads and metrics thread started\n");
-    printf("Visit http://localhost:%d/metrics to see performance metrics\n\n", PORT);
+    printf("Visit http://localhost:%d/metrics to see performance metrics\n\n", port);
     
     // Accept connections
     while (server_running) {

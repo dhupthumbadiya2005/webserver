@@ -26,6 +26,7 @@
 #define METRICS_INTERVAL 10
 
 // Cache entry structure
+//Doubly Linkedlist 
 typedef struct CacheEntry {
     char filename[MAX_FILENAME];
     char *content;

@@ -67,7 +67,7 @@ class LoadTester:
         # Clear previous results
         self.results = []
         
-        print(f"🚀 Starting Load Test")
+        print(f" Starting Load Test")
         print(f"   Requests: {num_requests}")
         print(f"   Threads: {num_threads}")
         print(f"   Endpoints: {endpoints}")
@@ -108,7 +108,7 @@ class LoadTester:
         response_times = [r['response_time'] for r in successful_requests]
         
         print("\n" + "="*60)
-        print("📊 LOAD TEST RESULTS")
+        print(" LOAD TEST RESULTS")
         print("="*60)
         
         print(f"Total Requests: {num_requests}")
@@ -212,9 +212,9 @@ def main():
     # Check if server is running
     try:
         response = requests.get("http://localhost:8080", timeout=5)
-        print("✅ Server is running and responding")
+        print(" Server is running and responding")
     except:
-        print("❌ Server is not responding. Please start the server first:")
+        print(" Server is not responding. Please start the server first:")
         print("   make run")
         return
     
@@ -237,7 +237,7 @@ def main():
     tester.clear_results()
     tester.run_load_test(num_requests=200, num_threads=20)
     
-    print("\n✅ All tests completed!")
+    print("\n All tests completed!")
     print("\nTo view live metrics, visit: http://localhost:8080/metrics")
 
 if __name__ == "__main__":
